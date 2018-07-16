@@ -1,0 +1,31 @@
+#ifndef __TENSORPP__CONFIG__
+#define __TENSORPP__CONFIG__
+
+// transfer cmake variables here
+// via configure_file() mechanism
+
+#cmakedefine NAME_OF_PROJECT "@NAME_OF_PROJECT@"
+#cmakedefine PROJECT_VERSION "@PROJECT_VERSION@"
+
+// system information
+#cmakedefine UNIX
+#cmakedefine WIN32
+#cmakedefine CMAKE_CXX_STANDARD @CMAKE_CXX_STANDARD@
+#cmakedefine CMAKE_CXX_COMPILER_ID "@CMAKE_CXX_COMPILER_ID@"
+
+// convenient macros for CXX standard version
+#if CMAKE_CXX_STANDARD == 11
+    #define CXXSTD_11
+#elif CMAKE_CXX_STANDARD == 14
+    #define CXXSTD_14
+#elif CMAKE_CXX_STANDARD == 17
+    #define CXXSTD_17
+#endif
+
+// wheather 64 bit OR not
+#cmakedefine BUILD_64BIT
+#ifdef BUILD_64BIT
+    #define IS_64BIT
+#endif
+
+#endif
