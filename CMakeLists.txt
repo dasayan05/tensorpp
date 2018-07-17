@@ -11,6 +11,7 @@ set(PROJECT_VERSION ${${PROJECT_NAME}_VERSION})
 
 # all options should go here
 option(BUILD_BINARIES "Build the binaries ?" ON)
+option(BUILD_TESTS "Build tests ?" ON)
 option(BUILD_64BIT "Build 64 bit library ?" ON)
 
 # some convinient variables to
@@ -39,4 +40,14 @@ target_include_directories(${NAME_OF_PROJECT} INTERFACE
 # build the binaries if requested
 if (BUILD_BINARIES)
     add_subdirectory(bin)
+endif ()
+
+# unit testing with GoogleTest
+find_package(GTest)
+
+if (BUILD_TESTS AND GTEST_FOUND)
+    # make tests runnable via ctest
+    enable_testing()
+    # contains unit tests and build procedure
+    add_subdirectory(tests)
 endif ()
