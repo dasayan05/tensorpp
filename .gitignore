@@ -1,1 +1,6 @@
+## ignore build junks
 build/
+
+## ignore IDE specific junks
+# for QtCreator
+CMakeLists.txt.user
