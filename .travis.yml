@@ -15,16 +15,6 @@ notifications:
     on_success: never
     on_failure: always
 
-# compiler installation
-#addons:
-#  apt:
-#    sources:
-#      - ubuntu-toolchain-r-test
-#    packages:
-#      - g++-5
-#      - g++-6
-#      - g++-7
-
 matrix:
   include:
       - compiler: g++-5
@@ -52,13 +42,14 @@ matrix:
           apt:
             packages:
              - clang++-5.0
+             - clang-5.0
             sources:
              - llvm-toolchain-trusty-5.0
              - 
                 sourceline: 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main'
                 key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
         env:
-         - MATRIX_ENV_CXX="CXX=clang++-5.0"
+         - MATRIX_ENV_CXX="CC=clang-5.0 CXX=clang++-5.0"
 
 before_script:
     - eval "${MATRIX_ENV_CXX}"
