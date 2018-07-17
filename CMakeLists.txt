@@ -23,6 +23,11 @@ configure_file(${SOURCE_DIR}/tensor++/config.hpp.in config.hpp)
 
 # Header-only library, so INTERFACE
 add_library(${NAME_OF_PROJECT} INTERFACE)
+# add the headers as sources so that
+# IDE's can show them properly
+file(GLOB_RECURSE HEADERS_LIST
+	"src/tensor++/*.hpp")
+target_sources(${NAME_OF_PROJECT} INTERFACE ${HEADERS_LIST})
 
 # INTERFACE include directories;
 # this is the reason every header file should have
