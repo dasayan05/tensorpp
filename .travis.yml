@@ -1,0 +1,86 @@
+# system information
+os: linux
+dist: trusty
+sudo: require
+language: cpp
+
+# notification settings
+notifications:
+  slack:
+    rooms:
+      - crystal-code:JqFo74Bh13mTda4fbkf0xyGW#cpp
+  email:
+    recipients:
+      - dasayan05@hotmail.com
+    on_success: never
+    on_failure: always
+
+# compiler installation
+#addons:
+#  apt:
+#    sources:
+#      - ubuntu-toolchain-r-test
+#    packages:
+#      - g++-5
+#      - g++-6
+#      - g++-7
+
+matrix:
+  include:
+      - compiler: g++-5
+        addons:
+          apt:
+            packages:
+             - g++-5
+            sources:
+             - ubuntu-toolchain-r-test
+        env:
+         - MATRIX_ENV_CXX="CXX=g++-5"
+
+      - compiler: g++-6
+        addons:
+          apt:
+            packages:
+             - g++-6
+            sources:
+             - ubuntu-toolchain-r-test
+        env:
+         - MATRIX_ENV_CXX="CXX=g++-6"
+
+      - compiler: clang++-5.0
+        addons:
+          apt:
+            packages:
+             - clang++-5.0
+            sources:
+             - llvm-toolchain-trusty-5.0
+             - 
+                sourceline: 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main'
+                key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
+        env:
+         - MATRIX_ENV_CXX="CXX=clang++-5.0"
+
+before_script:
+    - eval "${MATRIX_ENV_CXX}"
+    
+    # setup GoogleTest
+    - sudo apt-get -qq update
+    - sudo apt-get install -y cmake
+    - sudo wget https://github.com/google/googletest/archive/release-1.8.0.tar.gz
+    - sudo tar xf release-1.8.0.tar.gz
+    - cd googletest-release-1.8.0
+    - sudo cmake -DBUILD_SHARED_LIBS=OFF -DBUILD_GMOCK=OFF -DBUILD_GTEST=ON .
+    - sudo make
+    - sudo cp -a googletest/include/gtest /usr/include
+    - sudo cp -a googletest/libgtest*.a /usr/lib/
+    - cd ..
+    
+    # create build directory for CMake
+    # generation and cd into it
+    - mkdir build
+    - cd build
+
+script:
+    - cmake ..
+    - make
+    - ctest
