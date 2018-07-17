@@ -4,6 +4,7 @@
 /* standard library includes
  * must go at the very begining */
 #include <iostream>
+#include <string>
 
 namespace tensorpp {
 // the 'version' namespace to contain version
@@ -29,6 +30,10 @@ namespace version {
 
         std::cout << CMAKE_CXX_COMPILER_ID << " compiler with C++ " << CMAKE_CXX_STANDARD << '\n';
         std::cout << std::flush;
+    }
+
+    std::string get_version() {
+        return std::string(PROJECT_VERSION);
     }
 
 } // namespace 'version'
