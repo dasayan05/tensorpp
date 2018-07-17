@@ -26,7 +26,7 @@ add_library(${NAME_OF_PROJECT} INTERFACE)
 # add the headers as sources so that
 # IDE's can show them properly
 # TODO: GLOBing NOT recommended, find other way
-file(GLOB_RECURSE HEADERS_LIST "src/tensor++/*.hpp")
+file(GLOB_RECURSE HEADERS_LIST "${SOURCE_DIR}/*.hpp")
 target_sources(${NAME_OF_PROJECT} INTERFACE ${HEADERS_LIST})
 
 # INTERFACE include directories;
