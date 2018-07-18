@@ -1,6 +1,3 @@
-#ifndef __TENSORPP__CONFIG__
-#define __TENSORPP__CONFIG__
-
 /*
  *  Copyright (C) 2018
  *  @author Ayan Das
@@ -19,6 +16,10 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
+
+#ifndef __TENSORPP__CONFIG__
+#define __TENSORPP__CONFIG__
+
 
 // transfer cmake variables here
 // via configure_file() mechanism
