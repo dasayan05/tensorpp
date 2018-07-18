@@ -47,7 +47,8 @@ namespace version {
             std::cout << "Built with 64 bit" << '\n';
         #endif
 
-        std::cout << CMAKE_CXX_COMPILER_ID << " compiler with C++ " << CMAKE_CXX_STANDARD << '\n';
+        std::cout << CMAKE_CXX_COMPILER_ID <<
+            " (" << CMAKE_CXX_COMPILER_VERSION << ") compiler with C++" << CMAKE_CXX_STANDARD << '\n';
         std::cout << std::flush;
     }
 

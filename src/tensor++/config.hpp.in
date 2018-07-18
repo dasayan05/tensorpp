@@ -32,6 +32,7 @@
 #cmakedefine WIN32
 #cmakedefine CMAKE_CXX_STANDARD @CMAKE_CXX_STANDARD@
 #cmakedefine CMAKE_CXX_COMPILER_ID "@CMAKE_CXX_COMPILER_ID@"
+#cmakedefine CMAKE_CXX_COMPILER_VERSION "@CMAKE_CXX_COMPILER_VERSION@"
 
 // convenient macros for CXX standard version
 #if CMAKE_CXX_STANDARD == 11
