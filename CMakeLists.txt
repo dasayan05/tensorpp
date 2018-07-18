@@ -4,9 +4,9 @@ project(tensorpp
     VERSION 0.1  # version of Tensor++
     LANGUAGES CXX) # language in use (c++ only)
 
-# set CXX standard; using cmake >= 3.1 makes it
-# easy by CMAKE_CXX_STANDARD(..); C++11 *for now*
-set(CMAKE_CXX_STANDARD 11)
+# include helper scripts to activate latest C++ standard
+include(cmake/CXXSTD.cmake)
+
 set(PROJECT_VERSION ${${PROJECT_NAME}_VERSION})
 
 # all options should go here
