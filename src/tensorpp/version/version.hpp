@@ -25,10 +25,14 @@
 #include <iostream>
 #include <string>
 
+#ifdef CXXSTD_17
+namespace tensorpp::version {
+#else
 namespace tensorpp {
 // the 'version' namespace to contain version
 // related routines and meta information
 namespace version {
+#endif
 
     // print configuration info
     void print_info() {
@@ -48,16 +52,19 @@ namespace version {
         #endif
 
         std::cout << CMAKE_CXX_COMPILER_ID <<
-            " (" << CMAKE_CXX_COMPILER_VERSION << ") compiler with C++" << CMAKE_CXX_STANDARD << '\n';
+            " (" << CMAKE_CXX_COMPILER_VERSION << ") compiler with C++" << LATEST_CXX_STD << '\n';
         std::cout << std::flush;
     }
 
     std::string get_version() {
         return std::string(PROJECT_VERSION);
     }
-
+#ifdef CXXSTD_17
+} // namespace 'tensorpp::version'
+#else
 } // namespace 'version'
 
 } // namespace 'tensorpp'
+#endif
 
 #endif
