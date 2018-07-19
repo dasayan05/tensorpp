@@ -6,7 +6,7 @@ project(tensorpp
 
 # include helper scripts to activate latest C++ standard
 include(cmake/CXXSTD.cmake)
-message(STATUS "C++${CMAKE_CXX_STANDARD} detected and activated.")
+message(STATUS "C++${LATEST_CXX_STD} detected and activated.")
 
 set(PROJECT_VERSION ${${PROJECT_NAME}_VERSION})
 
