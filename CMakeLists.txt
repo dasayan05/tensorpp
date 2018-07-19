@@ -20,7 +20,7 @@ set(NAME_OF_PROJECT "${PROJECT_NAME}")
 set(SOURCE_DIR "src")
 
 # generate config.hpp file with configuration info
-configure_file(${SOURCE_DIR}/tensor++/config.hpp.in config.hpp)
+configure_file(${SOURCE_DIR}/tensorpp/config.hpp.in config.hpp)
 
 # Header-only library, so INTERFACE
 add_library(${NAME_OF_PROJECT} INTERFACE)
@@ -32,7 +32,8 @@ target_sources(${NAME_OF_PROJECT} INTERFACE ${HEADERS_LIST})
 
 # INTERFACE include directories;
 # this is the reason every header file should have
-# include statements like '#include <tensor++/xx.hpp>'
+# include statements like '#include <tensorpp/**/*.hpp>'
+# OR, simply '#include <tensor++>'
 target_include_directories(${NAME_OF_PROJECT} INTERFACE ${SOURCE_DIR})
 target_include_directories(${NAME_OF_PROJECT} INTERFACE 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)

@@ -17,15 +17,5 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <iostream>
-using std::cout;
-using std::endl;
-
-#include <tensor++>
-using namespace tensorpp;
-
-int main(int argc, char const *argv[])
-{
-    version::print_info();
-    return 0;
-}
+// This is a C++ style extension-less header
+#include <tensorpp/tensorpp.hpp>

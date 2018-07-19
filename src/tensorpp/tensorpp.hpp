@@ -24,6 +24,6 @@
     # include <config.hpp>
 
     // version information
-    #include <tensor++/version/version.hpp>
+    #include <tensorpp/version/version.hpp>
 
 #endif
