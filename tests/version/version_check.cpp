@@ -18,7 +18,7 @@
  */
 
 // the Tensor++ headers
-#include <tensor++>
+#include <tensorpp/tensorpp.hpp>
 using namespace tensorpp;
 
 // GoogleTest headers

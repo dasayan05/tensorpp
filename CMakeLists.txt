@@ -34,7 +34,7 @@ target_sources(${NAME_OF_PROJECT} INTERFACE ${HEADERS_LIST})
 # INTERFACE include directories;
 # this is the reason every header file should have
 # include statements like '#include <tensorpp/**/*.hpp>'
-# OR, simply '#include <tensor++>'
+# OR, simply '#include <tensorpp/tensorpp.hpp>'
 target_include_directories(${NAME_OF_PROJECT} INTERFACE ${SOURCE_DIR})
 target_include_directories(${NAME_OF_PROJECT} INTERFACE 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)

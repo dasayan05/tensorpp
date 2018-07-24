@@ -21,7 +21,7 @@
 using std::cout;
 using std::endl;
 
-#include <tensor++>
+#include <tensorpp/tensorpp.hpp>
 using namespace tensorpp;
 
 int main(int argc, char const *argv[])
