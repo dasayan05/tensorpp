@@ -25,14 +25,10 @@
 #include <iostream>
 #include <string>
 
-#ifdef CXXSTD_17
-namespace tensorpp::version {
-#else
 namespace tensorpp {
 // the 'version' namespace to contain version
 // related routines and meta information
 namespace version {
-#endif
 
     // print configuration info
     void print_info() {
@@ -59,12 +55,9 @@ namespace version {
     std::string get_version() {
         return std::string(PROJECT_VERSION);
     }
-#ifdef CXXSTD_17
-} // namespace 'tensorpp::version'
-#else
+
 } // namespace 'version'
 
 } // namespace 'tensorpp'
-#endif
 
 #endif
