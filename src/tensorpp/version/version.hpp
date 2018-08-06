@@ -25,6 +25,7 @@
 #include <iostream>
 #include <string>
 
+
 #ifdef CXXSTD_17
 namespace tensorpp::version {
 #else
@@ -36,24 +37,28 @@ namespace version {
 
     // print configuration info
     void print_info() {
-        std::cout << "Project: " << NAME_OF_PROJECT << '\n';
-        std::cout << "Version: " << PROJECT_VERSION << '\n';
-        std::cout << "System: " <<
+        // a local logger
+        auto logger = spdlog::stdout_color_st("tensorpp");
+        logger->set_pattern("[%n:%L] %v");
+
+        // start logging
+        logger->info("Project: {}", NAME_OF_PROJECT);
+        logger->info("Version: {}", PROJECT_VERSION);
+        logger->info("System: {}",
         #ifdef UNIX
             "Linux"
         #endif
         #ifdef WIN32
             "Windows"
         #endif
-            << '\n';
+        );
 
         #ifdef IS_64BIT
-            std::cout << "Built with 64 bit" << '\n';
+            logger->info("Built with 64 bit");
         #endif
 
-        std::cout << CMAKE_CXX_COMPILER_ID <<
-            " (" << CMAKE_CXX_COMPILER_VERSION << ") compiler with C++" << LATEST_CXX_STD << '\n';
-        std::cout << std::flush;
+        logger->info("{} ({}) compiler with C++{}", CMAKE_CXX_COMPILER_ID,
+            CMAKE_CXX_COMPILER_VERSION, LATEST_CXX_STD);
     }
 
     std::string get_version() {
