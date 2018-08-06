@@ -23,6 +23,11 @@
     // configuration header
     # include <config.hpp>
 
+    // spdlog - a logging library
+    #include "spdlog/spdlog.h"
+    #include "spdlog/sinks/stdout_color_sinks.h"
+    #include "spdlog/sinks/basic_file_sink.h"
+
     // version information
     #include <tensorpp/version/version.hpp>
 
