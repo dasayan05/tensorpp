@@ -6,10 +6,7 @@
 include(ExternalProject)
 
 ExternalProject_Add(spdlog # a fast C++ logging library
-    GIT_REPOSITORY "https://github.com/gabime/spdlog"
-    GIT_TAG "v1.0.0"
-    PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
-    CMAKE_ARGS "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER} -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}"
+    URL "https://github.com/gabime/spdlog/archive/v1.0.0.tar.gz"
     LOG_DOWNLOAD ON
 
     CONFIGURE_COMMAND "" # no need for configure,
