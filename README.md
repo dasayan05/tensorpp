@@ -1,4 +1,4 @@
-# Tensor++
+![](./res/logo.png)
 
 ### 1. Introduction
 This is a community driven project and developed collaboratively under **Crystal, a programming community**, which provides `Tensor` manipulation functionality in modern C++. The design goals of this project are:
