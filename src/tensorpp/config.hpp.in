@@ -33,6 +33,7 @@
 #cmakedefine LATEST_CXX_STD @LATEST_CXX_STD@
 #cmakedefine CMAKE_CXX_COMPILER_ID "@CMAKE_CXX_COMPILER_ID@"
 #cmakedefine CMAKE_CXX_COMPILER_VERSION "@CMAKE_CXX_COMPILER_VERSION@"
+#cmakedefine DEBUG @DEBUG@
 
 // convenient macros for CXX standard version
 #if LATEST_CXX_STD == 11
