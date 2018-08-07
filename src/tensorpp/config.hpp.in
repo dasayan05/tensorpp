@@ -26,6 +26,9 @@
 
 #cmakedefine NAME_OF_PROJECT "@NAME_OF_PROJECT@"
 #cmakedefine PROJECT_VERSION "@PROJECT_VERSION@"
+#define PROJECT_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define PROJECT_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define PROJECT_VERSION_PATCH @PROJECT_VERSION_PATCH@
 
 // system information
 #cmakedefine UNIX
@@ -48,6 +51,13 @@
 #cmakedefine BUILD_64BIT
 #ifdef BUILD_64BIT
     #define IS_64BIT
+#endif
+
+// string representation of system type
+#ifdef UNIX
+	#define SYSTEM "Linux"
+#elif WINDOWS
+	#define SYSTEM "Windows"
 #endif
 
 #endif

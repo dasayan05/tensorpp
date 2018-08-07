@@ -17,20 +17,44 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-// the Tensor++ headers
-#include <tensorpp/tensorpp.hpp>
-using namespace tensorpp;
+#ifndef __TENSORPP__META_STRUCTS__
+#define __TENSORPP__META_STRUCTS__
 
-// GoogleTest headers
-#include <gtest/gtest.h>
+/* standard library includes
+ * must go at the very begining */
 
-// standard headers
-#include <string>
+namespace tensorpp {
+// the 'version' namespace to contain version
+// related routines and meta information
+namespace version {
+	
+	/* A structure that holds version number
+	 * an may (TODO) provide some version
+	 * manipulation functionalities
+	 */
+	typedef
+	struct _version_struct {
+		uint8_t _major = 1;
+		uint8_t _minor = 0;
+		uint8_t _patch = 0;
+		constexpr _version_struct(uint8_t _major, uint8_t _minor, uint8_t _patch) :
+			_major(_major), _minor(_minor), _patch(_patch)
+		{
+			// ...
+		}
+	}
+	VersionStruct;
+	
+	/*
+	 * 
+	 */
+	enum class SysArch {
+		BIT_32,
+		BIT_64
+	};
+	
+} // namespace 'version'
 
-TEST(version, version_check_simple)
-{
-	auto tensorpp_version = version::get_tensorpp_version();
-    ASSERT_EQ(tensorpp_version._major, PROJECT_VERSION_MAJOR);
-    ASSERT_EQ(tensorpp_version._minor, PROJECT_VERSION_MINOR);
-    ASSERT_EQ(tensorpp_version._patch, PROJECT_VERSION_PATCH);
-}
+} // namespace 'tensorpp'
+
+#endif

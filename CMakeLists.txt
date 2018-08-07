@@ -1,7 +1,7 @@
 # use modern CMake (i.e., cmake>=3.1)
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 project(tensorpp 
-    VERSION 0.1  # version of Tensor++
+    VERSION 0.1.0  # version of Tensor++
     LANGUAGES CXX) # language in use (c++ only)
 
 # include helper scripts to activate latest C++ standard

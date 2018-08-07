@@ -22,44 +22,65 @@
 
 /* standard library includes
  * must go at the very begining */
-#include <iostream>
 #include <string>
+
+#include <tensorpp/version/meta_structs.hpp>
 
 namespace tensorpp {
 // the 'version' namespace to contain version
 // related routines and meta information
 namespace version {
 
+    // get current Tensor++ version
+    VersionStruct get_tensorpp_version() {
+        return VersionStruct(PROJECT_VERSION_MAJOR,
+                            PROJECT_VERSION_MINOR,
+                            PROJECT_VERSION_PATCH);
+    }
+    
+    // get the system name; i.e. OS
+    std::string get_system_name() {
+        return std::string(SYSTEM);
+    }
+    
+    // get platform architecture
+    SysArch get_system_arch() {
+        #ifdef IS_64BIT
+            return SysArch::BIT_64;
+        #else
+            return SysArch::BIT_32;
+        #endif
+    }
+
     // print configuration info
-    void print_info() {
+    void print_info(bool system = true, bool compiler = true) {
         // a local logger
-        auto logger = spdlog::stdout_color_st("tensorpp");
+        auto logger = spdlog::stdout_color_st(NAME_OF_PROJECT);
         logger->set_pattern("[%n:%L] %v");
 
         // start logging
         logger->info("Project: {}", NAME_OF_PROJECT);
-        logger->info("Version: {}", PROJECT_VERSION);
-        logger->info("System: {}",
-        #ifdef UNIX
-            "Linux"
-        #endif
-        #ifdef WIN32
-            "Windows"
-        #endif
-        );
-
-        #ifdef IS_64BIT
-            logger->info("Built with 64 bit");
-        #endif
-
-        logger->info("{} ({}) compiler with C++{}", CMAKE_CXX_COMPILER_ID,
-            CMAKE_CXX_COMPILER_VERSION, LATEST_CXX_STD);
+        auto tensorpp_version = get_tensorpp_version();
+        logger->info("Version: {}.{}.{}", 
+            tensorpp_version._major,
+            tensorpp_version._minor,
+            tensorpp_version._patch);
+        
+        if (system) {
+            logger->info("System: {}", get_system_name());
+            
+            if (get_system_arch() == SysArch::BIT_64)
+                logger->info("Built with 64 bit");
+            else
+                logger->info("Built with 32 bit");
+        }
+        
+        if (compiler)
+            logger->info("{} ({}) compiler with C++{}", CMAKE_CXX_COMPILER_ID,
+                CMAKE_CXX_COMPILER_VERSION, LATEST_CXX_STD);
     }
-
-    std::string get_version() {
-        return std::string(PROJECT_VERSION);
-    }
-
+    
+    
 } // namespace 'version'
 
 } // namespace 'tensorpp'
