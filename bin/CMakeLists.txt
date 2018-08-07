@@ -1,12 +1,19 @@
 # This directory contains sources for the additional binaries to be
 # shipped with Tensor++; may be some command line tools or applications
-#
-# TODO: make binary target creation easier
 
-# add two such lines for every executable binary
-#       add_executable(<name of binary> <list of sources>)
-#       target_link_libraries(<name of binary> PRIVATE ${NAME_OF_PROJECT})
+# creates a binary target with name 'binary_name'
+# compiling 'binary_sources'; also links Tensor++
+macro (make_binary binary_name binary_sources)
+	# binary_name: name of the binary
+	# binary_sources: list of sources to be compiled
+	
+	add_executable(${binary_name} ${binary_sources})
+	target_link_libraries(${binary_name} PRIVATE ${NAME_OF_PROJECT})
+	
+endmacro ()
 
-# 'info' binary
-add_executable(info sample.cpp)
-target_link_libraries(info PRIVATE ${NAME_OF_PROJECT})
+# list of all the binary targets
+
+# 1. 'info': provides meta information about Tensor++
+make_binary(info
+	sample.cpp)
