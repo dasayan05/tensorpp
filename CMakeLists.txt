@@ -48,6 +48,9 @@ add_subdirectory(external)
 if (spdlog_FOUND)
     target_include_directories(${NAME_OF_PROJECT} INTERFACE ${spdlog_INCLUDE_DIR})
 endif ()
+if (cxxopts_FOUND)
+    target_include_directories(${NAME_OF_PROJECT} INTERFACE ${cxxopts_INCLUDE_DIR})
+endif ()
 
 # build the binaries if requested
 if (BUILD_BINARIES)
