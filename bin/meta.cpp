@@ -24,8 +24,21 @@ using std::endl;
 #include <tensorpp/tensorpp.hpp>
 using namespace tensorpp;
 
-int main(int argc, char const *argv[])
+int main(int argc, char** argv)
 {
-    version::print_info();
+	cxxopts::Options options("tensorpp", "A Tensor manipulation library in C++");
+	options.add_options()
+		("c,compiler", "show compiler information")
+		("s,system", "show system information");
+	
+	auto args = options.parse(argc, argv);
+	try {
+		bool compiler = args["compiler"].as<bool>();
+		bool system = args["system"].as<bool>();
+		
+    	version::print_info(system, compiler);
+    } catch(const cxxopts::OptionSpecException& optEx) {
+    	cout << "cxxopts threw exception" << optEx.what() << endl;
+    }
     return 0;
 }
