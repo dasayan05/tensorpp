@@ -15,5 +15,5 @@ endmacro ()
 # list of all the binary targets
 
 # 1. 'info': provides meta information about Tensor++
-make_binary(info
-	sample.cpp)
+make_binary(meta
+	meta.cpp)
