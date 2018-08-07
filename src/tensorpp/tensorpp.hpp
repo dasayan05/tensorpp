@@ -28,6 +28,9 @@
     #include "spdlog/sinks/stdout_color_sinks.h"
     #include "spdlog/sinks/basic_file_sink.h"
 
+	// cxxopts - a command line parser
+	#include "cxxopts.hpp"
+
     // version information
     #include <tensorpp/version/version.hpp>
 
