@@ -9,10 +9,12 @@ notifications:
   slack:
     rooms:
       - crystal-code:JqFo74Bh13mTda4fbkf0xyGW#cpp
+    on_success: change
+    on_failure: always
   email:
     recipients:
       - dasayan05@hotmail.com
-    on_success: never
+    on_success: change
     on_failure: always
 
 matrix:
