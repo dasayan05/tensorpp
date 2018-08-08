@@ -26,7 +26,7 @@
 namespace tensorpp {
 // the 'version' namespace to contain version
 // related routines and meta information
-namespace version {
+namespace utils {
 	
 	/* A structure that holds version number
 	 * an may (TODO) provide some version

@@ -29,7 +29,7 @@
 namespace tensorpp {
 // the 'version' namespace to contain version
 // related routines and meta information
-namespace version {
+namespace utils {
 
     // get current Tensor++ version
     VersionStruct get_tensorpp_version() {

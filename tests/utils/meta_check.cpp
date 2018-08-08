@@ -27,10 +27,23 @@ using namespace tensorpp;
 // standard headers
 #include <string>
 
-TEST(version, version_check_simple)
+TEST(meta, version_check)
 {
-	auto tensorpp_version = version::get_tensorpp_version();
+	auto tensorpp_version = utils::get_tensorpp_version();
     ASSERT_EQ(tensorpp_version._major, TENSORPP_VERSION_MAJOR);
     ASSERT_EQ(tensorpp_version._minor, TENSORPP_VERSION_MINOR);
     ASSERT_EQ(tensorpp_version._patch, TENSORPP_VERSION_PATCH);
+}
+
+TEST(meta, system_check)
+{
+    auto tensorpp_system = utils::get_system_name();
+    ASSERT_EQ(tensorpp_system, TENSORPP_SYSTEM);
+
+    auto tensorpp_arch = utils::get_system_arch();
+    #ifdef TENSORPP_64BIT
+        ASSERT_EQ(tensorpp_arch, utils::SysArch::BIT_64);
+    #elif TENSORPP_32BIT
+        ASSERT_EQ(tensorpp_arch, utils::SysArch::BIT_32);
+    #endif
 }

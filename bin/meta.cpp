@@ -36,7 +36,7 @@ int main(int argc, char** argv)
 		bool compiler = args["compiler"].as<bool>();
 		bool system = args["system"].as<bool>();
 		
-    	version::print_info(system, compiler);
+    	utils::print_info(system, compiler);
     } catch(const cxxopts::OptionSpecException& optEx) {
     	cout << "cxxopts threw exception" << optEx.what() << endl;
     }
