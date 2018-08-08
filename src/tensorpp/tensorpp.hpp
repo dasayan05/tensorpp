@@ -32,6 +32,6 @@
 	#include "cxxopts.hpp"
 
     // version information
-    #include <tensorpp/version/version.hpp>
+    #include <tensorpp/utils/meta.hpp>
 
 #endif

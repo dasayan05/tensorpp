@@ -24,7 +24,7 @@
  * must go at the very begining */
 #include <string>
 
-#include <tensorpp/version/meta_structs.hpp>
+#include <tensorpp/utils/meta_structs.hpp>
 
 namespace tensorpp {
 // the 'version' namespace to contain version
