@@ -33,19 +33,19 @@ namespace version {
 
     // get current Tensor++ version
     VersionStruct get_tensorpp_version() {
-        return VersionStruct(PROJECT_VERSION_MAJOR,
-                            PROJECT_VERSION_MINOR,
-                            PROJECT_VERSION_PATCH);
+        return VersionStruct(TENSORPP_VERSION_MAJOR,
+                            TENSORPP_VERSION_MINOR,
+                            TENSORPP_VERSION_PATCH);
     }
     
     // get the system name; i.e. OS
     std::string get_system_name() {
-        return std::string(SYSTEM);
+        return std::string(TENSORPP_SYSTEM);
     }
     
     // get platform architecture
     SysArch get_system_arch() {
-        #ifdef IS_64BIT
+        #ifdef TENSORPP_64BIT
             return SysArch::BIT_64;
         #else
             return SysArch::BIT_32;
@@ -55,11 +55,11 @@ namespace version {
     // print configuration info
     void print_info(bool system = true, bool compiler = true) {
         // a local logger
-        auto logger = spdlog::stdout_color_st(NAME_OF_PROJECT);
+        auto logger = spdlog::stdout_color_st(TENSORPP);
         logger->set_pattern("[%n:%L] %v");
 
         // start logging
-        logger->info("Project: {}", NAME_OF_PROJECT);
+        logger->info("Project: {}", TENSORPP);
         auto tensorpp_version = get_tensorpp_version();
         logger->info("Version: {}.{}.{}", 
             tensorpp_version._major,
@@ -76,8 +76,8 @@ namespace version {
         }
         
         if (compiler)
-            logger->info("{} ({}) compiler with C++{}", CMAKE_CXX_COMPILER_ID,
-                CMAKE_CXX_COMPILER_VERSION, LATEST_CXX_STD);
+            logger->info("{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,
+                TENSORPP_CXX_COMPILER_VERSION, TENSORPP_CXX_STANDARD);
     }
     
     

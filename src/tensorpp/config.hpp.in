@@ -24,40 +24,44 @@
 // transfer cmake variables here
 // via configure_file() mechanism
 
-#cmakedefine NAME_OF_PROJECT "@NAME_OF_PROJECT@"
-#cmakedefine PROJECT_VERSION "@PROJECT_VERSION@"
-#define PROJECT_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
-#define PROJECT_VERSION_MINOR @PROJECT_VERSION_MINOR@
-#define PROJECT_VERSION_PATCH @PROJECT_VERSION_PATCH@
+//// name and versions of Tensor++
+#define TENSORPP "@NAME_OF_PROJECT@"
+#define TENSORPP_VERSION "@PROJECT_VERSION@"
+#define TENSORPP_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
+#define TENSORPP_VERSION_MINOR @PROJECT_VERSION_MINOR@
+#define TENSORPP_VERSION_PATCH @PROJECT_VERSION_PATCH@
 
-// system information
+//// system information
 #cmakedefine UNIX
 #cmakedefine WIN32
-#cmakedefine LATEST_CXX_STD @LATEST_CXX_STD@
-#cmakedefine CMAKE_CXX_COMPILER_ID "@CMAKE_CXX_COMPILER_ID@"
-#cmakedefine CMAKE_CXX_COMPILER_VERSION "@CMAKE_CXX_COMPILER_VERSION@"
-#cmakedefine DEBUG @DEBUG@
+    // string representation of system type
+    #ifdef UNIX
+        #define TENSORPP_SYSTEM "Linux"
+    #elif WINDOWS
+        #define TENSORPP_SYSTEM "Windows"
+    #endif
 
-// convenient macros for CXX standard version
-#if LATEST_CXX_STD == 11
-    #define CXXSTD_11
-#elif LATEST_CXX_STD == 14
-    #define CXXSTD_14
-#elif LATEST_CXX_STD == 17
-    #define CXXSTD_17
-#endif
+    // check wheather 64 bit OR not
+    #cmakedefine BUILD_64BIT
+    #ifdef BUILD_64BIT
+        #define TENSORPP_64BIT
+    #else
+        #define TENSORPP_32BIT
+    #endif
 
-// wheather 64 bit OR not
-#cmakedefine BUILD_64BIT
-#ifdef BUILD_64BIT
-    #define IS_64BIT
-#endif
+//// compiler information
+#define TENSORPP_CXX_STANDARD @LATEST_CXX_STD@
+#define TENSORPP_CXX_COMPILER_ID "@CMAKE_CXX_COMPILER_ID@"
+#define TENSORPP_CXX_COMPILER_VERSION "@CMAKE_CXX_COMPILER_VERSION@"
+#define TENSORPP_DEBUG @DEBUG@
 
-// string representation of system type
-#ifdef UNIX
-	#define SYSTEM "Linux"
-#elif WINDOWS
-	#define SYSTEM "Windows"
-#endif
+    // convenient macros for CXX standard version
+    #if TENSORPP_CXX_STANDARD == 11
+        #define TENSORPP_CXX11
+    #elif TENSORPP_CXX_STANDARD == 14
+        #define TENSORPP_CXX14
+    #elif TENSORPP_CXX_STANDARD == 17
+        #define TENSORPP_CXX17
+    #endif
 
 #endif
