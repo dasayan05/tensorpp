@@ -1,4 +1,4 @@
-![](./res/logo.png)
+![](./extra/logo.png)
 
 | Linux |
 | ----- |
