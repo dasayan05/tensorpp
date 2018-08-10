@@ -14,6 +14,7 @@ foreach (_module ${TEST_MODULES})
 
     # each source file inside ${_module} directory should
     # produce one unittest executable linked against GTest
+    set(TEST_SRCS "")
     aux_source_directory(${_module} TEST_SRCS)
     foreach (_src ${TEST_SRCS})
 
