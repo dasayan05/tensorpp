@@ -57,9 +57,12 @@ get_filename_component(LAPACK_LIBRARY_DIR ${LAPACK_LIBRARY} DIRECTORY)
 if (BLA_VENDOR STREQUAL "Intel10_64lp")
     set(BLAS_LIBNAME "mkl_rt")
     set(LAPACK_LIBNAME "mkl_rt")
-else ()
+elseif (BLA_VENDOR STREQUAL "Generic")
     set(BLAS_LIBNAME "blas")
     set(LAPACK_LIBNAME "lapack")
+else ()
+    # TODO: add support for other BLAS implementation
+    message(FATAL_ERROR "Only Intel MKL-BLAS and Generic BLAS are supported at the moment")
 endif ()
 
 ExternalProject_Add(dl_lapackpp # a wrapper on lapack
