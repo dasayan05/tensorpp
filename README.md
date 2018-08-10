@@ -16,6 +16,7 @@ This is a community driven project and developed collaboratively under **Crystal
 
 1. OS: Linux/Windows (not tested on Mac). **Linux** recommended.
 2. `CMake >= 3.1`, i.e. modern CMake.
+3. `BLAS` and `LAPACK`. Execute `sudo apt install libblas-dev liblapack-dev` to install the *Generic* BLAS and LAPACK. Refer online for efficient implementations of `BLAS` and `LAPACK`. At the moment only *Generic BLAS* and *Intel MKL-BLAS* are supported.
 
 ### 3. Instructions for Building and Running
 
@@ -28,6 +29,7 @@ This is a community driven project and developed collaboratively under **Crystal
    1. `-DBUILD_BINARIES=OFF` to exclude binaries from building
    2. `-DBUILD_TESTS=OFF` to excludes tests from building
    3. `-DBUILD_64BIT` to build 64 bit version of the library
+   4. `-DBLA_VENDOR=Intel10_64lp` for linking with `Intel MKL-BLAS`
 5. Run `make` to build it. Optionally with `-j<N>` flag to parallelize the build on multi-core processors.
 6. Run tests with `ctest`. (only possible if `-DBUILD_TESTS=ON` was selected in step 4 which is the default setting).
 
