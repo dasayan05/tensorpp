@@ -23,13 +23,16 @@
     // configuration header
     # include <config.hpp>
 
+    // lapack++ - a c++ wrapper on LAPACK/BLAS
+    #include "lapackpp.h"
+
     // spdlog - a logging library
     #include "spdlog/spdlog.h"
     #include "spdlog/sinks/stdout_color_sinks.h"
     #include "spdlog/sinks/basic_file_sink.h"
 
-	// cxxopts - a command line parser
-	#include "cxxopts.hpp"
+    // cxxopts - a command line parser
+    #include "cxxopts.hpp"
 
     // version information
     #include <tensorpp/utils/meta.hpp>

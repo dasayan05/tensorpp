@@ -51,6 +51,10 @@ endif ()
 if (cxxopts_FOUND)
     target_include_directories(${NAME_OF_PROJECT} INTERFACE ${cxxopts_INCLUDE_DIR})
 endif ()
+if (lapackpp_FOUND)
+    target_include_directories(${NAME_OF_PROJECT} INTERFACE ${lapackpp_INCLUDE_DIR})
+    target_link_libraries(${NAME_OF_PROJECT} INTERFACE lapackpp)
+endif ()
 
 # build the binaries if requested
 if (BUILD_BINARIES)
