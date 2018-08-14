@@ -42,19 +42,9 @@ target_include_directories(${NAME_OF_PROJECT} INTERFACE ${SOURCE_DIR})
 target_include_directories(${NAME_OF_PROJECT} INTERFACE 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
-# get external dependencies
-add_subdirectory(external)
-# apply external dependencies
-if (spdlog_FOUND)
-    target_include_directories(${NAME_OF_PROJECT} INTERFACE ${spdlog_INCLUDE_DIR})
-endif ()
-if (cxxopts_FOUND)
-    target_include_directories(${NAME_OF_PROJECT} INTERFACE ${cxxopts_INCLUDE_DIR})
-endif ()
-if (lapackpp_FOUND)
-    target_include_directories(${NAME_OF_PROJECT} INTERFACE ${lapackpp_INCLUDE_DIR})
-    target_link_libraries(${NAME_OF_PROJECT} INTERFACE lapackpp)
-endif ()
+# external dependencies
+target_include_directories(${NAME_OF_PROJECT} INTERFACE "external/cxxopts/include")
+target_include_directories(${NAME_OF_PROJECT} INTERFACE "external/spdlog/include")
 
 # build the binaries if requested
 if (BUILD_BINARIES)

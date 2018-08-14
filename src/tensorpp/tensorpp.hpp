@@ -23,9 +23,6 @@
     // configuration header
     # include <config.hpp>
 
-    // lapack++ - a c++ wrapper on LAPACK/BLAS
-    #include "lapackpp.h"
-
     // spdlog - a logging library
     #include "spdlog/spdlog.h"
     #include "spdlog/sinks/stdout_color_sinks.h"
