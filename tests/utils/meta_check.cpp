@@ -17,12 +17,12 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+// GoogleTest headers
+#include <gtest/gtest.h>
+
 // the Tensor++ headers
 #include <tensorpp/tensorpp.hpp>
 using namespace tensorpp;
-
-// GoogleTest headers
-#include <gtest/gtest.h>
 
 // standard headers
 #include <string>
