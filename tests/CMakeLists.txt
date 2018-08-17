@@ -7,7 +7,8 @@
 
 # test modules
 set(TEST_MODULES
-    utils)
+    utils
+    blas)
 
 # iterate over all module directories
 foreach (_module ${TEST_MODULES})
