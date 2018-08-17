@@ -45,6 +45,24 @@ target_include_directories(${NAME_OF_PROJECT} INTERFACE
 # external dependencies
 target_include_directories(${NAME_OF_PROJECT} INTERFACE "external/cxxopts/include")
 target_include_directories(${NAME_OF_PROJECT} INTERFACE "external/spdlog/include")
+find_package(OpenBLAS)
+if (OpenBLAS_FOUND)
+    message(STATUS "Found OpenBLAS (auto)")
+    target_include_directories(${NAME_OF_PROJECT} INTERFACE ${OpenBLAS_INCLUDE_DIRS})
+    target_link_libraries(${NAME_OF_PROJECT} INTERFACE ${OpenBLAS_LIBRARIES})
+else ()
+    # manually specify OpenBLAS location with 'OPENBLAS_ROOT' variable as root
+    # directory of OpenBLAS.
+    # TODO: as of now no checking on whether OpenBLAS library really exists on specifies location
+    if (NOT OPENBLAS_ROOT)
+        # a default location for OpenBLAS if not specified
+        # TODO: other locations also possible (e.g. /opt/OpenBLAS)
+        set(OPENBLAS_ROOT "/usr")
+    endif ()
+    target_include_directories(${NAME_OF_PROJECT} INTERFACE ${OPENBLAS_ROOT}/include)
+    target_link_libraries(${NAME_OF_PROJECT} INTERFACE ${OPENBLAS_ROOT}/lib/libopenblas.so)
+    message(STATUS "specified OpenBLAS at ${OPENBLAS_ROOT}/include ${OPENBLAS_ROOT}/lib/libopenblas.so")
+endif ()
 
 # build the binaries if requested
 if (BUILD_BINARIES)

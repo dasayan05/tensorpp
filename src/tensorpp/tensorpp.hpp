@@ -23,6 +23,10 @@
     // configuration header
     # include <config.hpp>
 
+    // BLAS/LAPACK C headers
+    #include "cblas.h"
+    #include "lapacke.h"
+
     // spdlog - a logging library
     #include "spdlog/spdlog.h"
     #include "spdlog/sinks/stdout_color_sinks.h"
