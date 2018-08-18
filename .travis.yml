@@ -73,7 +73,7 @@ before_script:
     - sudo tar xf release-1.8.0.tar.gz
     - cd googletest-release-1.8.0
     - sudo cmake -DBUILD_SHARED_LIBS=OFF -DBUILD_GMOCK=OFF -DBUILD_GTEST=ON .
-    - sudo make
+    - sudo make -j`nproc`
     - sudo cp -a googletest/include/gtest /usr/include
     - sudo cp -a googletest/libgtest*.a /usr/lib/
     - cd ..
@@ -85,5 +85,5 @@ before_script:
 
 script:
     - cmake ..
-    - make
+    - make -j`nproc`
     - ctest -V
