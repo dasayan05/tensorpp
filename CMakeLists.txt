@@ -26,30 +26,32 @@ set(SOURCE_DIR "src")
 # generate config.hpp file with configuration info
 configure_file(${SOURCE_DIR}/tensorpp/config.hpp.in config.hpp)
 
-# Header-only library, so INTERFACE
-add_library(${NAME_OF_PROJECT} INTERFACE)
+# produce STATIC library
+file(GLOB_RECURSE SOURCE_LIST "${SOURCE_DIR}/*.cpp")
+add_library(${NAME_OF_PROJECT} STATIC ${SOURCE_LIST})
 # add the headers as sources so that
 # IDE's can show them properly
 # TODO: GLOBing NOT recommended, find other way
 file(GLOB_RECURSE HEADERS_LIST "${SOURCE_DIR}/*.hpp")
-target_sources(${NAME_OF_PROJECT} INTERFACE ${HEADERS_LIST})
+target_sources(${NAME_OF_PROJECT} PUBLIC ${HEADERS_LIST})
 
-# INTERFACE include directories;
-# this is the reason every header file should have
+# This is the reason every header/src file should have
 # include statements like '#include <tensorpp/**/*.hpp>'
 # OR, simply '#include <tensorpp/tensorpp.hpp>'
-target_include_directories(${NAME_OF_PROJECT} INTERFACE ${SOURCE_DIR})
-target_include_directories(${NAME_OF_PROJECT} INTERFACE 
+target_include_directories(${NAME_OF_PROJECT} PUBLIC ${SOURCE_DIR})
+target_include_directories(${NAME_OF_PROJECT} PUBLIC 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
 # external dependencies
-target_include_directories(${NAME_OF_PROJECT} INTERFACE "external/cxxopts/include")
-target_include_directories(${NAME_OF_PROJECT} INTERFACE "external/spdlog/include")
+# TODO: having a wrapper on 'cxxopts' and 'spdlog', we
+# can make these dependencies PRIVATE wrt the library target
+target_include_directories(${NAME_OF_PROJECT} PUBLIC "external/cxxopts/include")
+target_include_directories(${NAME_OF_PROJECT} PUBLIC "external/spdlog/include")
 find_package(OpenBLAS)
 if (OpenBLAS_FOUND)
     message(STATUS "Found OpenBLAS (auto)")
-    target_include_directories(${NAME_OF_PROJECT} INTERFACE ${OpenBLAS_INCLUDE_DIRS})
-    target_link_libraries(${NAME_OF_PROJECT} INTERFACE ${OpenBLAS_LIBRARIES})
+    target_include_directories(${NAME_OF_PROJECT} PRIVATE ${OpenBLAS_INCLUDE_DIRS})
+    target_link_libraries(${NAME_OF_PROJECT} PRIVATE ${OpenBLAS_LIBRARIES})
 else ()
     # manually specify OpenBLAS location with 'OPENBLAS_ROOT' variable as root
     # directory of OpenBLAS.
@@ -59,8 +61,8 @@ else ()
         # TODO: other locations also possible (e.g. /opt/OpenBLAS)
         set(OPENBLAS_ROOT "/usr")
     endif ()
-    target_include_directories(${NAME_OF_PROJECT} INTERFACE ${OPENBLAS_ROOT}/include)
-    target_link_libraries(${NAME_OF_PROJECT} INTERFACE ${OPENBLAS_ROOT}/lib/libopenblas.so)
+    target_include_directories(${NAME_OF_PROJECT} PRIVATE ${OPENBLAS_ROOT}/include)
+    target_link_libraries(${NAME_OF_PROJECT} PRIVATE ${OPENBLAS_ROOT}/lib/libopenblas.so)
     message(STATUS "specified OpenBLAS at ${OPENBLAS_ROOT}/include ${OPENBLAS_ROOT}/lib/libopenblas.so")
 endif ()
 
