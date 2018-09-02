@@ -1,5 +1,9 @@
-// required header in all source files
-#include <tensorpp/tensorpp.hpp>
+#include <config.hpp>
+#include <tensorpp/utils/meta_structs.hpp>
+
+// spdlog - a logging library
+#include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
 
 namespace tensorpp {
 

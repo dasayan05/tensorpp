@@ -27,11 +27,6 @@
     #include "cblas.h"
     #include "lapacke.h"
 
-    // spdlog - a logging library
-    #include "spdlog/spdlog.h"
-    #include "spdlog/sinks/stdout_color_sinks.h"
-    #include "spdlog/sinks/basic_file_sink.h"
-
     // cxxopts - a command line parser
     #include "cxxopts.hpp"
 
