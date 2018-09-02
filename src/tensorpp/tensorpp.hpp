@@ -27,9 +27,6 @@
     #include "cblas.h"
     #include "lapacke.h"
 
-    // cxxopts - a command line parser
-    #include "cxxopts.hpp"
-
     // version information
     #include <tensorpp/utils/meta.hpp>
 

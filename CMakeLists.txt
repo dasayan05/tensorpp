@@ -43,9 +43,8 @@ target_include_directories(${NAME_OF_PROJECT} PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
 # external dependencies
-# TODO: having a wrapper on 'cxxopts' and 'spdlog', we
-# can make these dependencies PRIVATE wrt the library target
-target_include_directories(${NAME_OF_PROJECT} PUBLIC "external/cxxopts/include")
+# TODO: having a wrapper on 'spdlog', we can make
+# this dependency PRIVATE wrt the library target
 target_include_directories(${NAME_OF_PROJECT} PUBLIC "external/spdlog/include")
 find_package(OpenBLAS)
 if (OpenBLAS_FOUND)

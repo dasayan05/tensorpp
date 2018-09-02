@@ -21,6 +21,9 @@
 using std::cout;
 using std::endl;
 
+// cmdline parser library
+#include "cxxopts.hpp"
+
 #include <tensorpp/tensorpp.hpp>
 using namespace tensorpp;
 
