@@ -22,6 +22,7 @@
 
 /* standard library includes
  * must go at the very begining */
+#include <cstdint>
 
 namespace tensorpp {
 // the 'version' namespace to contain version
@@ -34,9 +35,9 @@ namespace utils {
 	 */
 	typedef
 	struct _version_struct {
-		uint8_t _major = 1;
-		uint8_t _minor = 0;
-		uint8_t _patch = 0;
+		std::uint8_t _major = 1;
+		std::uint8_t _minor = 0;
+		std::uint8_t _patch = 0;
 		constexpr _version_struct(uint8_t _major, uint8_t _minor, uint8_t _patch) :
 			_major(_major), _minor(_minor), _patch(_patch)
 		{
@@ -46,7 +47,7 @@ namespace utils {
 	VersionStruct;
 	
 	/*
-	 * 
+	 * System architecture enum
 	 */
 	enum class SysArch {
 		BIT_32,
