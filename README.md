@@ -7,7 +7,7 @@
 ### 1. Introduction
 This is a community driven project and developed collaboratively under **Crystal, a programming community**, which provides `Tensor` manipulation functionality in modern C++. The design goals of this project are:
 
-1. Designing a `tensor` API similar to that of `torch` or `Tensorflow`
+1. Designing a `tensor` API similar to that of `torch`
 2. Clean API: "Easy to use, hard to misuse"
 3. Extendability: Ability to add custom functionality or extending available ones
 4. Performance: Quality code generation on varity of platforms and environments
