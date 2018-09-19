@@ -4,6 +4,9 @@ project(tensorpp
     VERSION 0.1.0  # version of Tensor++
     LANGUAGES CXX) # language in use (c++ only)
 
+# make the cmake scripts in "./cmake/" visible to CMake
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
 # include helper scripts to activate latest C++ standard
 include(cmake/CXXSTD.cmake)
 message(STATUS "C++${LATEST_CXX_STD} detected and activated.")
