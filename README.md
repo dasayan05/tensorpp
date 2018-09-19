@@ -29,7 +29,6 @@ This is a community driven project and developed collaboratively under **Crystal
    1. `-DBUILD_BINARIES=OFF` to exclude binaries from building
    2. `-DBUILD_TESTS=OFF` to excludes tests from building
    3. `-DBUILD_64BIT` to build 64 bit version of the library
-   4. `-DOPENBLAS_ROOT=<root/of/openblas>` to manually specify the path to OpenBLAS.
 5. Run `make` to build it. Optionally with `-j<N>` flag to parallelize the build on multi-core processors.
 6. Run tests with `ctest`. (only possible if `-DBUILD_TESTS=ON` was selected in step 4 which is the default setting).
 
