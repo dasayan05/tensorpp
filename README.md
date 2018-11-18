@@ -21,8 +21,8 @@ This is a community driven project and developed collaboratively under **Crystal
 ### 3. Instructions for Building and Running
 
 1. Clone the Repository with:
-   1. **(HTTP)** `git clone https://github.com/crystalcpp/tensorpp.git`
-   2. **(SSH)** `git clone git@github.com:crystalcpp/tensorpp.git`
+   1. **(HTTP)** `git clone https://github.com/crystalcpp/tensorpp.git --recursive`
+   2. **(SSH)** `git clone git@github.com:crystalcpp/tensorpp.git --recursive`
 2. Enter the repository folder with `cd tensorpp`
 3. Create a build directory and enter it with: `mkdir build; cd build`
 4. Generate Makefile with `cmake ..`, optionally you can configure the build with:
