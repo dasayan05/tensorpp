@@ -24,7 +24,7 @@ foreach (_module ${TEST_MODULES})
 
         # link against Tensor++; headers will be added automatically
         # as the headers are configured as INTERFACE dependencies
-        target_link_libraries(${_test} PRIVATE ${NAME_OF_PROJECT})
+        target_link_libraries(${_test} PRIVATE ${PROJECT_NAME})
 
         # link against GTest and expose GTest headers
         target_include_directories(${_test} PRIVATE ${GTEST_INCLUDE_DIRS})

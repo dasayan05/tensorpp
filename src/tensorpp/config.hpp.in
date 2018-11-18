@@ -25,7 +25,7 @@
 // via configure_file() mechanism
 
 //// name and versions of Tensor++
-#define TENSORPP "@NAME_OF_PROJECT@"
+#define TENSORPP "@PROJECT_NAME@"
 #define TENSORPP_VERSION "@PROJECT_VERSION@"
 #define TENSORPP_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
 #define TENSORPP_VERSION_MINOR @PROJECT_VERSION_MINOR@

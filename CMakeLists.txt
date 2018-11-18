@@ -23,7 +23,6 @@ endif ()
 
 # some convinient variables to
 # use throughout cmake script
-set(NAME_OF_PROJECT "${PROJECT_NAME}")
 set(SOURCE_DIR "src")
 
 # generate config.hpp file with configuration info
@@ -31,30 +30,30 @@ configure_file(${SOURCE_DIR}/tensorpp/config.hpp.in config.hpp)
 
 # produce STATIC library
 file(GLOB_RECURSE SOURCE_LIST "${SOURCE_DIR}/*.cpp")
-add_library(${NAME_OF_PROJECT} STATIC ${SOURCE_LIST})
+add_library(${PROJECT_NAME} STATIC ${SOURCE_LIST})
 # add the headers as sources so that
 # IDE's can show them properly
 # TODO: GLOBing NOT recommended, find other way
 file(GLOB_RECURSE HEADERS_LIST "${SOURCE_DIR}/*.hpp")
-target_sources(${NAME_OF_PROJECT} PUBLIC ${HEADERS_LIST})
+target_sources(${PROJECT_NAME} PUBLIC ${HEADERS_LIST})
 
 # This is the reason every header/src file should have
 # include statements like '#include <tensorpp/**/*.hpp>'
 # OR, simply '#include <tensorpp/tensorpp.hpp>'
-target_include_directories(${NAME_OF_PROJECT} PUBLIC ${SOURCE_DIR})
-target_include_directories(${NAME_OF_PROJECT} PUBLIC 
+target_include_directories(${PROJECT_NAME} PUBLIC ${SOURCE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC 
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
 # external dependencies
 # TODO: having a wrapper on 'spdlog', we can make
 # this dependency PRIVATE wrt the library target
-target_include_directories(${NAME_OF_PROJECT} PUBLIC "external/spdlog/include")
+target_include_directories(${PROJECT_NAME} PUBLIC "external/spdlog/include")
 
 find_package(OpenBLAS REQUIRED)
 if (OpenBLAS_FOUND)
     message(STATUS "Found OpenBLAS")
-    target_include_directories(${NAME_OF_PROJECT} PRIVATE ${OpenBLAS_INCLUDE_DIR})
-    target_link_libraries(${NAME_OF_PROJECT} PRIVATE ${OpenBLAS_LIB})
+    target_include_directories(${PROJECT_NAME} PRIVATE ${OpenBLAS_INCLUDE_DIR})
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenBLAS_LIB})
 endif ()
 
 # build the binaries if requested
