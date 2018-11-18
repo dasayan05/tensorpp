@@ -16,7 +16,6 @@ set(PROJECT_VERSION ${${PROJECT_NAME}_VERSION})
 # all options should go here
 option(BUILD_BINARIES "Build the binaries ?" ON)
 option(BUILD_TESTS "Build tests ?" ON)
-option(BUILD_64BIT "Build 64 bit library ?" ON)
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(DEBUG 1)
 endif ()

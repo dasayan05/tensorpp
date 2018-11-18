@@ -41,14 +41,6 @@
         #define TENSORPP_SYSTEM "Windows"
     #endif
 
-    // check wheather 64 bit OR not
-    #cmakedefine BUILD_64BIT
-    #ifdef BUILD_64BIT
-        #define TENSORPP_64BIT
-    #else
-        #define TENSORPP_32BIT
-    #endif
-
 //// compiler information
 #define TENSORPP_CXX_STANDARD @LATEST_CXX_STD@
 #define TENSORPP_CXX_COMPILER_ID "@CMAKE_CXX_COMPILER_ID@"

@@ -46,14 +46,6 @@ namespace utils {
 	}
 	VersionStruct;
 	
-	/*
-	 * System architecture enum
-	 */
-	enum class SysArch {
-		BIT_32,
-		BIT_64
-	};
-	
 } // namespace 'version'
 
 } // namespace 'tensorpp'

@@ -22,15 +22,6 @@ namespace utils {
     std::string get_system_name() {
         return std::string(TENSORPP_SYSTEM);
     }
-    
-    // get platform architecture
-    SysArch get_system_arch() {
-        #ifdef TENSORPP_64BIT
-            return SysArch::BIT_64;
-        #else
-            return SysArch::BIT_32;
-        #endif
-    }
 
     // print configuration info
     void print_info(bool system, bool compiler) {
@@ -46,14 +37,8 @@ namespace utils {
             tensorpp_version._minor,
             tensorpp_version._patch);
         
-        if (system) {
+        if (system)
             logger->info("System: {}", get_system_name());
-            
-            if (get_system_arch() == SysArch::BIT_64)
-                logger->info("Built with 64 bit");
-            else
-                logger->info("Built with 32 bit");
-        }
         
         if (compiler)
             logger->info("{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,

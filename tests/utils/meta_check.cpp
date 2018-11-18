@@ -39,11 +39,4 @@ TEST(meta, system_check)
 {
     auto tensorpp_system = utils::get_system_name();
     ASSERT_EQ(tensorpp_system, TENSORPP_SYSTEM);
-
-    auto tensorpp_arch = utils::get_system_arch();
-    #ifdef TENSORPP_64BIT
-        ASSERT_EQ(tensorpp_arch, utils::SysArch::BIT_64);
-    #elif TENSORPP_32BIT
-        ASSERT_EQ(tensorpp_arch, utils::SysArch::BIT_32);
-    #endif
 }

@@ -36,9 +36,6 @@ namespace utils {
     
     // get the system name; i.e. OS
     std::string get_system_name();
-    
-    // get platform architecture
-    SysArch get_system_arch();
 
     // print configuration info
     void print_info(bool system = true, bool compiler = true);
