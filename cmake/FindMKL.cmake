@@ -47,26 +47,33 @@ set(THR_LIB "mkl_intel_thread")
 set(COR_LIB "mkl_core")
 # endif()
 
-find_path(MKL_INCLUDE_DIR NAMES mkl.h HINTS $ENV{MKLROOT}/include)
+if (MKLROOT)
+  message("MKLROOT detected, so searching for MKL in MKLROOT=${MKLROOT}")
+else ()
+  # need to test with original MKL
+  set(MKLROOT "/opt/intel/mkl")
+endif ()
+
+find_path(MKL_INCLUDE_DIR NAMES mkl.h HINTS ${MKLROOT}/include)
 
 find_library(MKL_INTERFACE_LIBRARY
              NAMES ${INT_LIB}
-             PATHS $ENV{MKLROOT}/lib
-                   $ENV{MKLROOT}/lib/intel64
+             PATHS ${MKLROOT}/lib
+                   ${MKLROOT}/lib/intel64
                    $ENV{INTEL}/mkl/lib/intel64
              NO_DEFAULT_PATH)
 
 find_library(MKL_SEQUENTIAL_LAYER_LIBRARY
              NAMES ${SEQ_LIB}
-             PATHS $ENV{MKLROOT}/lib
-                   $ENV{MKLROOT}/lib/intel64
+             PATHS ${MKLROOT}/lib
+                   ${MKLROOT}/lib/intel64
                    $ENV{INTEL}/mkl/lib/intel64
              NO_DEFAULT_PATH)
 
 find_library(MKL_CORE_LIBRARY
              NAMES ${COR_LIB}
-             PATHS $ENV{MKLROOT}/lib
-                   $ENV{MKLROOT}/lib/intel64
+             PATHS ${MKLROOT}/lib
+                   ${MKLROOT}/lib/intel64
                    $ENV{INTEL}/mkl/lib/intel64
              NO_DEFAULT_PATH)
 
