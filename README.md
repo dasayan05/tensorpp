@@ -16,7 +16,9 @@ This is a community driven project and developed collaboratively under **Crystal
 
 1. OS: Linux/Windows (not tested on Mac). **Linux** recommended.
 2. `CMake >= 3.1`, i.e. modern CMake.
-3. `OpenBLAS` and `lapacke`. Execute `sudo apt install libopenblas-dev libopenblas-base liblapacke-dev` to install the *OpenBLAS* and *lapacke*.
+3. Any one of:
+	* `Intel MKL`. Get it [here](https://software.intel.com/en-us/mkl). If not found, then
+	* `OpenBLAS`. Execute `sudo apt install libopenblas-dev libopenblas-base` to install the *OpenBLAS*.
 
 ### 3. Instructions for Building and Running
 

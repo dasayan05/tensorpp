@@ -57,3 +57,7 @@
     #endif
 
 #endif
+
+// dependency information
+#cmakedefine MKL_FOUND
+#cmakedefine OpenBLAS_FOUND

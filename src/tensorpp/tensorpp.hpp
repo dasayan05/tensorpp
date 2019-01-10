@@ -23,9 +23,15 @@
     // configuration header
     # include <config.hpp>
 
-    // BLAS/LAPACK C headers
-    #include "cblas.h"
-    #include "lapacke.h"
+	// if mkl is found
+	#ifdef MKL_FOUND
+		#include "mkl.h"
+	#endif
+
+	// if OpenBLAS if found
+	#ifdef OpenBLAS_FOUND
+    	#include "cblas.h"
+	#endif
 
     // version information
     #include <tensorpp/utils/meta.hpp>

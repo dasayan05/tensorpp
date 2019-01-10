@@ -24,6 +24,17 @@ endif ()
 # use throughout cmake script
 set(SOURCE_DIR "src")
 
+# MKL/OpenBLAS dependencies checking
+find_package(MKL)
+if (MKL_FOUND)
+    message(STATUS "Using MKL (and not OpenBLAS)")
+else ()
+    find_package(OpenBLAS REQUIRED)
+    if (OpenBLAS_FOUND)
+        message(STATUS "Using OpenBLAS, because MKL not found")
+    endif ()
+endif ()
+
 # generate config.hpp file with configuration info
 configure_file(${SOURCE_DIR}/tensorpp/config.hpp.in config.hpp)
 
@@ -48,12 +59,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 # this dependency PRIVATE wrt the library target
 target_include_directories(${PROJECT_NAME} PUBLIC "external/spdlog/include")
 
-find_package(OpenBLAS REQUIRED)
-if (OpenBLAS_FOUND)
-    message(STATUS "Found OpenBLAS")
-    target_include_directories(${PROJECT_NAME} PRIVATE ${OpenBLAS_INCLUDE_DIR})
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenBLAS_LIB})
-endif ()
+# link/include MKL/OpenBLAS libraries/headers
+target_include_directories(${PROJECT_NAME} PRIVATE ${MKL_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${MKL_LIBRARIES})
+target_include_directories(${PROJECT_NAME} PRIVATE ${OpenBLAS_INCLUDE_DIR})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenBLAS_LIB})
 
 # build the binaries if requested
 if (BUILD_BINARIES)
