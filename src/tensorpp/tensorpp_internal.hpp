@@ -17,13 +17,20 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef __TENSORPP__
-#define __TENSORPP__
+#ifndef __TENSORPP_INTERNAL__
+#define __TENSORPP_INTERNAL__
 
     // configuration header
     # include <config.hpp>
 
-    // version information
-    #include <tensorpp/utils/meta.hpp>
+	// if mkl is found
+	#ifdef MKL_FOUND
+		#include "mkl.h"
+	#endif
+
+	// if OpenBLAS if found
+	#ifdef OpenBLAS_FOUND
+    	#include "cblas.h"
+	#endif
 
 #endif
