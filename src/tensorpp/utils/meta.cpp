@@ -1,9 +1,7 @@
-#include <config.hpp>
-#include <tensorpp/utils/meta_structs.hpp>
+// all internal/private dependencies
+#include <tensorpp/tensorpp_internal.hpp>
 
-// spdlog - a logging library
-#include "spdlog/spdlog.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
+#include <tensorpp/utils/meta_structs.hpp>
 
 namespace tensorpp {
 

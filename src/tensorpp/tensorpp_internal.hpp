@@ -33,4 +33,8 @@
     	#include "cblas.h"
 	#endif
 
+    // spdlog - a logging library
+    #include "spdlog/spdlog.h"
+    #include "spdlog/sinks/stdout_color_sinks.h"
+
 #endif
