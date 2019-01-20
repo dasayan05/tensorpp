@@ -38,7 +38,7 @@ namespace utils {
     std::string get_system_name();
 
     // print configuration info
-    void print_info(bool system = true, bool compiler = true);
+    void print_info(bool system = true, bool compiler = true, bool deps = false);
     
 } // namespace 'version'
 

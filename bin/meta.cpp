@@ -32,14 +32,16 @@ int main(int argc, char** argv)
 	cxxopts::Options options("tensorpp", "A Tensor manipulation library in C++");
 	options.add_options()
 		("c,compiler", "show compiler information")
-		("s,system", "show system information");
+		("s,system", "show system information")
+        ("d,deps", "show dependencies/backends");
 	
 	auto args = options.parse(argc, argv);
 	try {
 		bool compiler = args["compiler"].as<bool>();
 		bool system = args["system"].as<bool>();
+        bool deps = args["deps"].as<bool>();
 		
-    	utils::print_info(system, compiler);
+    	utils::print_info(system, compiler, deps);
     } catch(const cxxopts::OptionSpecException& optEx) {
     	cout << "cxxopts threw exception" << optEx.what() << endl;
     }

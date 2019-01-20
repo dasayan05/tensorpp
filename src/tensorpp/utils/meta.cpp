@@ -22,7 +22,7 @@ namespace utils {
     }
 
     // print configuration info
-    void print_info(bool system, bool compiler) {
+    void print_info(bool system, bool compiler, bool deps) {
         // a local logger
         auto logger = spdlog::stdout_color_st(TENSORPP);
         logger->set_pattern("[%n:%L] %v");
@@ -41,6 +41,15 @@ namespace utils {
         if (compiler)
             logger->info("{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,
                 TENSORPP_CXX_COMPILER_VERSION, TENSORPP_CXX_STANDARD);
+
+        if (deps)
+        {
+            #ifdef MKL_FOUND
+                logger->info("CPU Backend: MKL");
+            #else
+                logger->info("CPU Backend: OpenBLAS");
+            #endif
+        }
     }
     
     
