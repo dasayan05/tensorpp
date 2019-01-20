@@ -29,7 +29,7 @@ using namespace tensorpp;
 
 TEST(meta, version_check)
 {
-	auto tensorpp_version = utils::get_tensorpp_version();
+	auto tensorpp_version = utils::get_version();
     ASSERT_EQ(tensorpp_version._major, TENSORPP_VERSION_MAJOR);
     ASSERT_EQ(tensorpp_version._minor, TENSORPP_VERSION_MINOR);
     ASSERT_EQ(tensorpp_version._patch, TENSORPP_VERSION_PATCH);

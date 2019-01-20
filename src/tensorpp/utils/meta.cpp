@@ -10,8 +10,8 @@ namespace tensorpp {
 namespace utils {
 
     // get current Tensor++ version
-    VersionStruct get_tensorpp_version() {
-        return VersionStruct(TENSORPP_VERSION_MAJOR,
+    Version get_version() {
+        return Version(TENSORPP_VERSION_MAJOR,
                             TENSORPP_VERSION_MINOR,
                             TENSORPP_VERSION_PATCH);
     }
@@ -33,7 +33,7 @@ namespace utils {
 
         // start logging
         logger->info("Project: {}", TENSORPP);
-        auto tensorpp_version = get_tensorpp_version();
+        auto tensorpp_version = get_version();
         logger->info("Version: {}.{}.{}", 
             tensorpp_version._major,
             tensorpp_version._minor,

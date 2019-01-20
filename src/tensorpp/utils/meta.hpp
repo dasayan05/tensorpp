@@ -32,7 +32,7 @@ namespace tensorpp {
 namespace utils {
 
     // get current Tensor++ version
-    VersionStruct get_tensorpp_version();
+    Version get_version();
     
     // get the system name; i.e. OS
     OSEnum get_platform();

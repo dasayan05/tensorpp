@@ -44,7 +44,7 @@ namespace utils {
 			// ...
 		}
 	}
-	VersionStruct;
+	Version;
 
 	// Enumeration for Operating System type
 	enum class OSEnum {
