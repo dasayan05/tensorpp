@@ -9,9 +9,6 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 # include helper scripts to activate latest C++ standard
 include(cmake/CXXSTD.cmake)
-message(STATUS "C++${LATEST_CXX_STD} detected and activated.")
-
-set(PROJECT_VERSION ${${PROJECT_NAME}_VERSION})
 
 # all options should go here
 option(BUILD_BINARIES "Build the binaries ?" ON)
@@ -40,7 +37,7 @@ target_sources(${PROJECT_NAME} PUBLIC ${HEADERS_LIST})
 # include statements like '#include <tensorpp/**/*.hpp>'
 # OR, simply '#include <tensorpp/tensorpp.hpp>'
 target_include_directories(${PROJECT_NAME} PUBLIC ${SOURCE_DIR})
-target_include_directories(${PROJECT_NAME} PUBLIC 
+target_include_directories(${PROJECT_NAME} PUBLIC  # This is for 'config.hpp'
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
 # external dependencies
