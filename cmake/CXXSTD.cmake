@@ -34,3 +34,5 @@ if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
 else ()
     message(FATAL_ERROR "Compiler not supported")
 endif ()
+
+message(STATUS "C++${LATEST_CXX_STD} detected and activated.")

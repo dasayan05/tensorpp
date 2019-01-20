@@ -2,7 +2,7 @@
 
 | Linux |
 | ----- |
-| [![Build Status](https://travis-ci.com/crystalcpp/tensorpp.svg?branch=master)](https://travis-ci.com/crystalcpp/tensorpp) |
+| [![Build Status](https://travis-ci.com/dasayan05/tensorpp.svg?branch=master)](https://travis-ci.com/dasayan05/tensorpp) |
 
 ### 1. Introduction
 This is a community driven project and developed collaboratively under **Crystal, a programming community**, which provides `Tensor` manipulation functionality in modern C++. The design goals of this project are:
