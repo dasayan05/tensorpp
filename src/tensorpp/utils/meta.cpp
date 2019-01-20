@@ -16,9 +16,13 @@ namespace utils {
                             TENSORPP_VERSION_PATCH);
     }
     
-    // get the system name; i.e. OS
-    std::string get_system_name() {
-        return std::string(TENSORPP_SYSTEM);
+    // get the platform/OS name
+    OSEnum get_platform() {
+        #ifdef UNIX
+            return OSEnum::Linux;
+        #elif WIN32
+            return OSEnum::Windows;
+        #endif
     }
 
     // print configuration info
@@ -36,7 +40,13 @@ namespace utils {
             tensorpp_version._patch);
         
         if (system)
-            logger->info("System: {}", get_system_name());
+        {
+            const OSEnum os = get_platform();
+            if (os == OSEnum::Windows)
+                logger->info("System: Windows");
+            else if (os == OSEnum::Linux)
+                logger->info("System: Linux");
+        }
         
         if (compiler)
             logger->info("{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,

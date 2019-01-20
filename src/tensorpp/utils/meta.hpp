@@ -35,7 +35,7 @@ namespace utils {
     VersionStruct get_tensorpp_version();
     
     // get the system name; i.e. OS
-    std::string get_system_name();
+    OSEnum get_platform();
 
     // print configuration info
     void print_info(bool system = true, bool compiler = true, bool deps = false);

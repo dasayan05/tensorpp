@@ -45,6 +45,12 @@ namespace utils {
 		}
 	}
 	VersionStruct;
+
+	// Enumeration for Operating System type
+	enum class OSEnum {
+		Windows,
+		Linux
+	};
 	
 } // namespace 'version'
 

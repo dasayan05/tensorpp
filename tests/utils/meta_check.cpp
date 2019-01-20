@@ -37,6 +37,10 @@ TEST(meta, version_check)
 
 TEST(meta, system_check)
 {
-    auto tensorpp_system = utils::get_system_name();
-    ASSERT_EQ(tensorpp_system, TENSORPP_SYSTEM);
+    auto tensorpp_os = utils::get_platform();
+    #ifdef UNIX
+        ASSERT_EQ(tensorpp_os, utils::OSEnum::Linux);
+    #elif WIN32
+        ASSERT_EQ(tensorpp_os, utils::OSEnum::Windows);
+    #endif
 }

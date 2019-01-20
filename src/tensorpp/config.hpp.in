@@ -34,12 +34,6 @@
 //// system information
 #cmakedefine UNIX
 #cmakedefine WIN32
-    // string representation of system type
-    #ifdef UNIX
-        #define TENSORPP_SYSTEM "Linux"
-    #elif WINDOWS
-        #define TENSORPP_SYSTEM "Windows"
-    #endif
 
 //// compiler information
 #define TENSORPP_CXX_STANDARD @LATEST_CXX_STD@
