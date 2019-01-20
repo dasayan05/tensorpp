@@ -17,8 +17,8 @@
  *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#ifndef __TENSORPP__VERSION__
-#define __TENSORPP__VERSION__
+#ifndef __TENSORPP__META__
+#define __TENSORPP__META__
 
 /* standard library includes
  * must go at the very begining */
