@@ -33,8 +33,11 @@
     	#include "cblas.h"
 	#endif
 
-    // spdlog - a logging library
-    #include "spdlog/spdlog.h"
-    #include "spdlog/sinks/stdout_color_sinks.h"
+	// 'fmt' library headers
+	#include <fmt/core.h>
+    #include <fmt/format.h>
+	#include <fmt/time.h>
+	#include <fmt/ostream.h>
+	using namespace fmt::literals;
 
 #endif

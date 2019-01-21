@@ -52,9 +52,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC  # This is for 'config.hpp'
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
 # external dependencies
-# TODO: having a wrapper on 'spdlog', we can make
-# this dependency PRIVATE wrt the library target
-target_include_directories(${PROJECT_NAME} PUBLIC "external/spdlog/include")
+# the 'fmt' library for logger formatting
+add_subdirectory(external/fmt)
+target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
 
 # link/include MKL/OpenBLAS libraries/headers
 if (MKL_FOUND)

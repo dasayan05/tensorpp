@@ -1,7 +1,7 @@
-// all internal/private dependencies
 #include <tensorpp/tensorpp_internal.hpp>
 
 #include <tensorpp/utils/meta_structs.hpp>
+#include <tensorpp/utils/logger.hpp>
 
 namespace tensorpp {
 
@@ -27,39 +27,38 @@ namespace utils {
 
     // print configuration info
     void print_info(bool system, bool compiler, bool deps) {
-        // a local logger
-        auto logger = spdlog::stdout_color_st(TENSORPP);
-        logger->set_pattern("[%n:%L] %v");
-
-        // start logging
-        logger->info("Project: {}", TENSORPP);
-        auto tensorpp_version = get_version();
-        logger->info("Version: {}.{}.{}", 
-            tensorpp_version._major,
-            tensorpp_version._minor,
-            tensorpp_version._patch);
         
-        if (system)
-        {
-            const OSEnum os = get_platform();
-            if (os == OSEnum::Windows)
-                logger->info("System: Windows");
-            else if (os == OSEnum::Linux)
-                logger->info("System: Linux");
-        }
+        // // start logging
+        // logger->info("Project: {}", TENSORPP);
+        // auto tensorpp_version = get_version();
+        // logger->info("Version: {}.{}.{}", 
+        //     tensorpp_version._major,
+        //     tensorpp_version._minor,
+        //     tensorpp_version._patch);
         
-        if (compiler)
-            logger->info("{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,
-                TENSORPP_CXX_COMPILER_VERSION, TENSORPP_CXX_STANDARD);
+        // if (system)
+        // {
+        //     const OSEnum os = get_platform();
+        //     if (os == OSEnum::Windows)
+        //         logger->info("System: Windows");
+        //     else if (os == OSEnum::Linux)
+        //         logger->info("System: Linux");
+        // }
+        
+        // if (compiler)
+        //     logger->info("{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,
+        //         TENSORPP_CXX_COMPILER_VERSION, TENSORPP_CXX_STANDARD);
 
-        if (deps)
-        {
-            #ifdef MKL_FOUND
-                logger->info("CPU Backend: MKL");
-            #else
-                logger->info("CPU Backend: OpenBLAS");
-            #endif
-        }
+        // if (deps)
+        // {
+        //     #ifdef MKL_FOUND
+        //         logger->info("CPU Backend: MKL");
+        //     #else
+        //         logger->info("CPU Backend: OpenBLAS");
+        //     #endif
+        // }
+
+        logger("hello", LogLevel::Info);
     }
     
     
