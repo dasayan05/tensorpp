@@ -33,11 +33,4 @@
     	#include "cblas.h"
 	#endif
 
-	// 'fmt' library headers
-	#include <fmt/core.h>
-    #include <fmt/format.h>
-	#include <fmt/time.h>
-	#include <fmt/ostream.h>
-	using namespace fmt::literals;
-
 #endif

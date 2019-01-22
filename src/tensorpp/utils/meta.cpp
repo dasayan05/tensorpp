@@ -28,37 +28,34 @@ namespace utils {
     // print configuration info
     void print_info(bool system, bool compiler, bool deps) {
         
-        // // start logging
-        // logger->info("Project: {}", TENSORPP);
-        // auto tensorpp_version = get_version();
-        // logger->info("Version: {}.{}.{}", 
-        //     tensorpp_version._major,
-        //     tensorpp_version._minor,
-        //     tensorpp_version._patch);
+        auto tensorpp_version = get_version();
+        logger(LogLevel::Info, "Version: {}.{}.{}",
+            tensorpp_version._major,
+            tensorpp_version._minor,
+            tensorpp_version._patch);
         
-        // if (system)
-        // {
-        //     const OSEnum os = get_platform();
-        //     if (os == OSEnum::Windows)
-        //         logger->info("System: Windows");
-        //     else if (os == OSEnum::Linux)
-        //         logger->info("System: Linux");
-        // }
+        if (system)
+        {
+            const OSEnum os = get_platform();
+            if (os == OSEnum::Windows)
+                logger(LogLevel::Info, "System: Windows");
+            else if (os == OSEnum::Linux)
+                logger(LogLevel::Info, "System: Linux");
+        }
         
-        // if (compiler)
-        //     logger->info("{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,
-        //         TENSORPP_CXX_COMPILER_VERSION, TENSORPP_CXX_STANDARD);
+        if (compiler)
+            logger(LogLevel::Info, "{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,
+                TENSORPP_CXX_COMPILER_VERSION, TENSORPP_CXX_STANDARD);
 
-        // if (deps)
-        // {
-        //     #ifdef MKL_FOUND
-        //         logger->info("CPU Backend: MKL");
-        //     #else
-        //         logger->info("CPU Backend: OpenBLAS");
-        //     #endif
-        // }
+        if (deps)
+        {
+            #ifdef MKL_FOUND
+                logger(LogLevel::Info, "CPU Backend: MKL");
+            #else
+                logger(LogLevel::Info, "CPU Backend: OpenBLAS");
+            #endif
+        }
 
-        logger("hello", LogLevel::Info);
     }
     
     
