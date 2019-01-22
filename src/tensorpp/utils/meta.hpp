@@ -20,27 +20,27 @@
 #ifndef __TENSORPP__META__
 #define __TENSORPP__META__
 
+#include <tensorpp/utils/meta_structs.hpp>
+
 /* standard library includes
  * must go at the very begining */
 #include <string>
 
-#include <tensorpp/utils/meta_structs.hpp>
-
 namespace tensorpp {
-// the 'version' namespace to contain version
-// related routines and meta information
+
+// the 'utils' namespace to contain version related routines and meta information
 namespace utils {
 
     // get current Tensor++ version
     Version get_version();
     
-    // get the system name; i.e. OS
+    // get the platform name; i.e. OS
     OSEnum get_platform();
 
     // print configuration info
     void print_info(bool system = true, bool compiler = true, bool deps = false);
     
-} // namespace 'version'
+} // namespace 'utils'
 
 } // namespace 'tensorpp'
 

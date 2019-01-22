@@ -20,12 +20,12 @@
 #ifndef __TENSORPP__META_STRUCTS__
 #define __TENSORPP__META_STRUCTS__
 
-/* standard library includes
- * must go at the very begining */
+// standard library includes
 #include <cstdint>
 
 namespace tensorpp {
-// the 'version' namespace to contain version
+
+// the 'utils' namespace to contain version
 // related routines and meta information
 namespace utils {
 	
@@ -52,7 +52,7 @@ namespace utils {
 		Linux
 	};
 	
-} // namespace 'version'
+} // namespace 'utils'
 
 } // namespace 'tensorpp'
 

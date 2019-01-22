@@ -5,9 +5,11 @@
 | [![Build Status](https://travis-ci.com/dasayan05/tensorpp.svg?branch=master)](https://travis-ci.com/dasayan05/tensorpp) |
 
 ### 1. Introduction
-This is a community driven project and developed collaboratively under **Crystal, a programming community**, which provides `Tensor` manipulation functionality in modern C++. The design goals of this project are:
+This is a community driven project and developed collaboratively. `Tensor++` provides Tensor (N dimensional array) manipulation functionality in modern C++. The design goals of this project are:
 
-1. Designing a `tensor` API similar to that of `torch`
+1. Design:
+    * A `tensor` API similar to that of `(py)torch`
+    * Dynamic graph approach
 2. Clean API: "Easy to use, hard to misuse"
 3. Extendability: Ability to add custom functionality or extending available ones
 4. Performance: Quality code generation on varity of platforms and environments
@@ -32,7 +34,7 @@ This is a community driven project and developed collaboratively under **Crystal
    2. `-DBUILD_TESTS=OFF` to excludes tests from building
    3. `-DMKLROOT=<path/to/mkl>` to provide a hint to find `Intel MKL`
 5. Run `make` to build it. Optionally with `-j<N>` flag to parallelize the build on multi-core processors.
-6. Run tests with `ctest`. (only possible if `-DBUILD_TESTS=ON` was selected in step 4 which is the default setting).
+6. Run tests with `ctest -V`. (only possible if `-DBUILD_TESTS=ON` was selected in step 4 which is the default setting).
 
 #### Collaborators
 

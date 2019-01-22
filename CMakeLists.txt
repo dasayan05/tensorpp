@@ -17,8 +17,7 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(DEBUG 1)
 endif ()
 
-# some convinient variables to
-# use throughout cmake script
+# some convinient variables to use throughout cmake script
 set(SOURCE_DIR "src")
 
 # MKL/OpenBLAS dependencies checking
@@ -38,11 +37,6 @@ configure_file(${SOURCE_DIR}/tensorpp/config.hpp.in config.hpp)
 # produce STATIC library
 file(GLOB_RECURSE SOURCE_LIST "${SOURCE_DIR}/*.cpp")
 add_library(${PROJECT_NAME} STATIC ${SOURCE_LIST})
-# add the headers as sources so that
-# IDE's can show them properly
-# TODO: GLOBing NOT recommended, find other way
-file(GLOB_RECURSE HEADERS_LIST "${SOURCE_DIR}/*.hpp")
-target_sources(${PROJECT_NAME} PUBLIC ${HEADERS_LIST})
 
 # This is the reason every header/src file should have
 # include statements like '#include <tensorpp/**/*.hpp>'
@@ -51,12 +45,13 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${SOURCE_DIR})
 target_include_directories(${PROJECT_NAME} PUBLIC  # This is for 'config.hpp'
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
-# external dependencies
-# the 'fmt' library for logger formatting
+# External dependencies:
+
+# The 'fmt' library for logger formatting
 add_subdirectory(external/fmt)
 target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)
 
-# link/include MKL/OpenBLAS libraries/headers
+# The 'MKL'/'OpenBLAS' libraries for core computational primitives
 if (MKL_FOUND)
     target_include_directories(${PROJECT_NAME} PRIVATE ${MKL_INCLUDE_DIRS})
     target_link_libraries(${PROJECT_NAME} PRIVATE ${MKL_LIBRARIES})

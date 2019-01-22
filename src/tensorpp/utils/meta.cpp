@@ -12,8 +12,8 @@ namespace utils {
     // get current Tensor++ version
     Version get_version() {
         return Version(TENSORPP_VERSION_MAJOR,
-                            TENSORPP_VERSION_MINOR,
-                            TENSORPP_VERSION_PATCH);
+                       TENSORPP_VERSION_MINOR,
+                       TENSORPP_VERSION_PATCH);
     }
     
     // get the platform/OS name
@@ -29,10 +29,10 @@ namespace utils {
     void print_info(bool system, bool compiler, bool deps) {
         
         auto tensorpp_version = get_version();
-        logger(LogLevel::Info, "Version: {}.{}.{}",
-            tensorpp_version._major,
-            tensorpp_version._minor,
-            tensorpp_version._patch);
+        logger(LogLevel::Info, 
+            "Version: {}.{}.{}", tensorpp_version._major,
+                                 tensorpp_version._minor,
+                                 tensorpp_version._patch);
         
         if (system)
         {
@@ -44,8 +44,10 @@ namespace utils {
         }
         
         if (compiler)
-            logger(LogLevel::Info, "{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,
-                TENSORPP_CXX_COMPILER_VERSION, TENSORPP_CXX_STANDARD);
+            logger(LogLevel::Info,
+                "{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,
+                                               TENSORPP_CXX_COMPILER_VERSION,
+                                               TENSORPP_CXX_STANDARD);
 
         if (deps)
         {
@@ -59,6 +61,6 @@ namespace utils {
     }
     
     
-} // namespace 'version'
+} // namespace 'utils'
 
 } // namespace 'tensorpp'

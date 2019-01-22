@@ -22,7 +22,7 @@ using std::cout;
 using std::endl;
 
 // cmdline parser library
-#include "cxxopts.hpp"
+#include <cxxopts.hpp>
 
 #include <tensorpp/tensorpp.hpp>
 using namespace tensorpp;
@@ -33,7 +33,7 @@ int main(int argc, char** argv)
 	options.add_options()
 		("c,compiler", "show compiler information")
 		("s,system", "show system information")
-        ("d,deps", "show dependencies/backends");
+        ("d,deps", "show dependency/backend information");
 	
 	auto args = options.parse(argc, argv);
 	try {
