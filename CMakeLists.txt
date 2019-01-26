@@ -19,6 +19,7 @@ endif ()
 
 # some convinient variables to use throughout cmake script
 set(SOURCE_DIR "src")
+set(HEADER_DIR "include")
 
 # MKL/OpenBLAS dependencies checking
 find_package(MKL)
@@ -32,7 +33,7 @@ else ()
 endif ()
 
 # generate config.hpp file with configuration info
-configure_file(${SOURCE_DIR}/tensorpp/config.hpp.in config.hpp)
+configure_file(${HEADER_DIR}/tensorpp/config.hpp.in config.hpp)
 
 # produce STATIC library
 file(GLOB_RECURSE SOURCE_LIST "${SOURCE_DIR}/*.cpp")
@@ -41,7 +42,7 @@ add_library(${PROJECT_NAME} STATIC ${SOURCE_LIST})
 # This is the reason every header/src file should have
 # include statements like '#include <tensorpp/**/*.hpp>'
 # OR, simply '#include <tensorpp/tensorpp.hpp>'
-target_include_directories(${PROJECT_NAME} PUBLIC ${SOURCE_DIR})
+target_include_directories(${PROJECT_NAME} PUBLIC ${HEADER_DIR})
 target_include_directories(${PROJECT_NAME} PUBLIC  # This is for 'config.hpp'
     $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
 
