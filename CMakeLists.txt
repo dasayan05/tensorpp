@@ -7,8 +7,9 @@ project(tensorpp
 # make the cmake scripts in "./cmake/" visible to CMake
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-# include helper scripts to activate latest C++ standard
-include(cmake/CXXSTD.cmake)
+# enable C++14 standard
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # all options should go here
 option(BUILD_BINARIES "Build the binaries ?" ON)

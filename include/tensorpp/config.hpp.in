@@ -36,19 +36,10 @@
 #cmakedefine WIN32
 
 //// compiler information
-#define TENSORPP_CXX_STANDARD @LATEST_CXX_STD@
+#define TENSORPP_CXX_STANDARD @CMAKE_CXX_STANDARD@
 #define TENSORPP_CXX_COMPILER_ID "@CMAKE_CXX_COMPILER_ID@"
 #define TENSORPP_CXX_COMPILER_VERSION "@CMAKE_CXX_COMPILER_VERSION@"
 #define TENSORPP_DEBUG @DEBUG@
-
-    // convenient macros for CXX standard version
-    #if TENSORPP_CXX_STANDARD == 11
-        #define TENSORPP_CXX11
-    #elif TENSORPP_CXX_STANDARD == 14
-        #define TENSORPP_CXX14
-    #elif TENSORPP_CXX_STANDARD == 17
-        #define TENSORPP_CXX17
-    #endif
 
 #endif
 
