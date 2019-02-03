@@ -6,11 +6,6 @@ language: cpp
 
 # notification settings
 notifications:
-  slack:
-    rooms:
-      - crystal-code:JqFo74Bh13mTda4fbkf0xyGW#cpp
-    on_success: change
-    on_failure: always
   email:
     recipients:
       - dasayan05@hotmail.com
@@ -48,20 +43,6 @@ matrix:
              - ubuntu-toolchain-r-test
         env:
          - MATRIX_ENV_CXX="CXX=g++-7"
-
-      # - compiler: clang++-5.0
-      #   addons:
-      #     apt:
-      #       packages:
-      #        - clang++-5.0
-      #        - clang-5.0
-      #       sources:
-      #        - llvm-toolchain-trusty-5.0
-      #        - 
-      #           sourceline: 'deb http://apt.llvm.org/trusty/ llvm-toolchain-trusty-5.0 main'
-      #           key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'
-      #   env:
-      #    - MATRIX_ENV_CXX="CC=clang-5.0 CXX=clang++-5.0"
 
 before_script:
     - eval "${MATRIX_ENV_CXX}"
