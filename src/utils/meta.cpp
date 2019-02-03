@@ -1,6 +1,6 @@
 #include <tensorpp/tensorpp_internal.hpp>
 
-#include <tensorpp/utils/meta_structs.hpp>
+#include <tensorpp/utils/meta.hpp>
 #include <tensorpp/utils/logger.hpp>
 
 namespace tensorpp {

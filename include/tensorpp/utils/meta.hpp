@@ -20,8 +20,6 @@
 #ifndef __TENSORPP__META__
 #define __TENSORPP__META__
 
-#include <tensorpp/utils/meta_structs.hpp>
-
 /* standard library includes
  * must go at the very begining */
 #include <string>
@@ -30,6 +28,29 @@ namespace tensorpp {
 
 // the 'utils' namespace to contain version related routines and meta information
 namespace utils {
+
+	/* A structure that holds version number
+	 * an may (TODO) provide some version
+	 * manipulation functionalities
+	 */
+	typedef
+	struct _version_struct {
+		std::uint8_t _major = 1;
+		std::uint8_t _minor = 0;
+		std::uint8_t _patch = 0;
+		constexpr _version_struct(uint8_t _major, uint8_t _minor, uint8_t _patch) :
+			_major(_major), _minor(_minor), _patch(_patch)
+		{
+			// ...
+		}
+	}
+	Version;
+
+	// Enumeration for Operating System type
+	enum class OSEnum {
+		Windows,
+		Linux
+	};
 
     // get current Tensor++ version
     Version get_version();
