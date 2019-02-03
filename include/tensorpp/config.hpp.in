@@ -41,8 +41,8 @@
 #define TENSORPP_CXX_COMPILER_VERSION "@CMAKE_CXX_COMPILER_VERSION@"
 #define TENSORPP_DEBUG @DEBUG@
 
-#endif
-
 // dependency information
 #cmakedefine MKL_FOUND
 #cmakedefine OpenBLAS_FOUND
+
+#endif
