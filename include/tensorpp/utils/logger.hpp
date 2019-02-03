@@ -27,6 +27,7 @@ using namespace fmt::literals;
 
 // standard library includes
 #include <string>
+#include <map>
 
 namespace tensorpp {
 
@@ -44,6 +45,14 @@ namespace utils {
         Fatal   // serious trouble
     };
 
+    static const std::map<LogLevel, const char*> LogLevel2Label {
+        { LogLevel::Debug, "Debug" },
+        { LogLevel::Info , "Info " },
+        { LogLevel::Warn , "Warn " },
+        { LogLevel::Error, "Error" },
+        { LogLevel::Fatal, "Fatal" }
+    };
+
     /* The main logger class of Tensor++, which
     * depends on the 'fmt' library for formatting
     * purpose. */
@@ -52,51 +61,41 @@ namespace utils {
     private:
         
         // unique name for a logger object
-        std::string _name = "base";
+        const std::string _name = "base";
         // current logging level
         LogLevel _level;
 
     public:
 
         // constructor of Logger class
-        Logger(const char* loggername, LogLevel defaultlevel = LogLevel::Info)
+        explicit Logger(const char* loggername, LogLevel defaultlevel = LogLevel::Info)
             : _level(defaultlevel), _name(loggername) {	}
 
         template<typename ...Args>
-        short operator() (LogLevel level, const char* onlymsg, Args&&... args) {
+        void operator() (LogLevel&& level, const char* onlymsg, Args&&... args) const noexcept {
             // get current time/data
-            std::time_t now = std::time(nullptr);
-            std::string loglevel_str;
+            std::time_t now;
 
-            switch (level)
+            if ( level >= _level )
             {
-            case LogLevel::Debug:
-                loglevel_str = "Debug"; break;
-            case LogLevel::Info:
-                loglevel_str = "Info"; break;
-            case LogLevel::Warn:
-                loglevel_str = "Warn"; break;
-            case LogLevel::Fatal:
-                loglevel_str = "Fatal"; break;
-            case LogLevel::Error:
-                loglevel_str = "Error"; break;
+                now = std::time(nullptr);
+
+                // The entire log message line consists of two parts:
+                // A prefix (containing name of logger, loglevel, and timestamp) ...
+                std::string prefix = fmt::format("[{loggername}: {loglevel}][{timestamp:%T}]",
+                    "loggername"_a = _name,
+                    "loglevel"_a = LogLevel2Label.at(level),
+                    "timestamp"_a = *std::localtime(&now)
+                );
+                
+                // ... and the content of the logging message
+                std::string content = fmt::format(onlymsg, std::forward<Args>(args)...);
+
+                fmt::print("{prefix}: {content}\n",
+                    "prefix"_a = prefix.c_str(),
+                    "content"_a = content.c_str()
+                );
             }
-
-            // The entire log message line consists of two parts:
-            // A prefix (containing name of logger, loglevel, and timestamp) ...
-            std::string prefix = fmt::format("[{loggername}: {loglevel}][{timestamp:%T}]",
-                "loggername"_a = _name,
-                "loglevel"_a = loglevel_str,
-                "timestamp"_a = *std::localtime(&now)
-            );
-            
-            // ... and the content of the logging message
-            std::string content = fmt::format(onlymsg, std::forward<Args>(args)...);
-
-            fmt::print("{prefix}: {content}\n",
-                "prefix"_a = prefix.c_str(),
-                "content"_a = content.c_str()
-            );
         }
 
     };
