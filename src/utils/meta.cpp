@@ -29,22 +29,22 @@ namespace utils {
     void print_info(bool system, bool compiler, bool deps) {
         
         auto tensorpp_version = get_version();
-        logger(LogLevel::Info, 
-            "Version: {}.{}.{}", tensorpp_version._major,
-                                 tensorpp_version._minor,
-                                 tensorpp_version._patch);
+        TPP_INFO("Version: {}.{}.{}",
+            tensorpp_version._major,
+            tensorpp_version._minor,
+            tensorpp_version._patch);
         
         if (system)
         {
             const OSEnum os = get_platform();
             if (os == OSEnum::Windows)
-                logger(LogLevel::Info, "System: Windows");
+                TPP_INFO("System: Windows");
             else if (os == OSEnum::Linux)
-                logger(LogLevel::Info, "System: Linux");
+                TPP_INFO("System: Linux");
         }
         
         if (compiler)
-            logger(LogLevel::Info,
+            TPP_INFO(
                 "{} ({}) compiler with C++{}", TENSORPP_CXX_COMPILER_ID,
                                                TENSORPP_CXX_COMPILER_VERSION,
                                                TENSORPP_CXX_STANDARD);
@@ -52,9 +52,9 @@ namespace utils {
         if (deps)
         {
             #ifdef MKL_FOUND
-                logger(LogLevel::Info, "CPU Backend: MKL");
+                TPP_INFO("CPU Backend: MKL");
             #else
-                logger(LogLevel::Info, "CPU Backend: OpenBLAS");
+                TPP_INFO("CPU Backend: OpenBLAS");
             #endif
         }
 

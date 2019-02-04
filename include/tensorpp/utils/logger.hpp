@@ -110,4 +110,18 @@ namespace utils {
 
 } // namespace 'tensorpp'
 
+#ifdef TENSORPP_DEBUG
+    #define TPP_DEBUG(...) logger(LogLevel::Debug, __VA_ARGS__)
+    #define TPP_INFO(...) logger(LogLevel::Info, __VA_ARGS__)
+    #define TPP_WARN(...) logger(LogLevel::Warn, __VA_ARGS__)
+    #define TPP_ERROR(...) logger(LogLevel::Error, __VA_ARGS__)
+    #define TPP_FATAL(...) logger(LogLevel::Fatal, __VA_ARGS__)
+#else
+    #define TPP_DEBUG(...)
+    #define TPP_INFO(...)
+    #define TPP_WARN(...)
+    #define TPP_ERROR(...)
+    #define TPP_FATAL(...)
+#endif
+
 #endif // __TENSORPP_LOGGER__
