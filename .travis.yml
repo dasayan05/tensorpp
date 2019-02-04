@@ -22,30 +22,23 @@ matrix:
             sources:
              - ubuntu-toolchain-r-test
         env:
+         - BUILD_TYPE="Debug"
          - MATRIX_ENV_CXX="CXX=g++-5"
 
-      - compiler: g++-6
+      - compiler: g++-5
         addons:
           apt:
             packages:
-             - g++-6
+             - g++-5
             sources:
              - ubuntu-toolchain-r-test
         env:
-         - MATRIX_ENV_CXX="CXX=g++-6"
-
-      - compiler: g++-7
-        addons:
-          apt:
-            packages:
-             - g++-7
-            sources:
-             - ubuntu-toolchain-r-test
-        env:
-         - MATRIX_ENV_CXX="CXX=g++-7"
+         - BUILD_TYPE_ENV="CMAKE_BUILD_TYPE=Release"
+         - MATRIX_ENV_CXX="CXX=g++-5"
 
 before_script:
     - eval "${MATRIX_ENV_CXX}"
+    - eval "${BUILD_TYPE_ENV}"
     
     # setup GoogleTest
     - sudo apt-get -qq update
@@ -65,6 +58,6 @@ before_script:
     - cd build
 
 script:
-    - cmake ..
+    - cmake .. -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     - make -j`nproc`
     - ctest -V
