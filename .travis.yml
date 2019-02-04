@@ -22,7 +22,7 @@ matrix:
             sources:
              - ubuntu-toolchain-r-test
         env:
-         - BUILD_TYPE="Debug"
+         - BUILD_TYPE_ENV="CMAKE_BUILD_TYPE=Debug"
          - MATRIX_ENV_CXX="CXX=g++-5"
 
       - compiler: g++-5
