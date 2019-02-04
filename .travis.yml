@@ -61,4 +61,4 @@ script:
     - cmake .. -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     - make -j`nproc`
     - ctest -V
-    - sh travisrunner.sh
+    - sh ../travisrunner.sh
